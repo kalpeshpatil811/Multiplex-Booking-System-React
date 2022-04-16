@@ -1,0 +1,11 @@
+.bookings{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.addbtn{
+  width: 50%;
+}
+.bookingcontainer{
+  margin-bottom: 50px;
+}
