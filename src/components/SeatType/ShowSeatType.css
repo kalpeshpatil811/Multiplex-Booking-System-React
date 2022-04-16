@@ -1,0 +1,11 @@
+.seatTypes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .addbtn{
+    width: 50%;
+  }
+  .seatTypecontainer{
+    margin-bottom: 50px;
+  }

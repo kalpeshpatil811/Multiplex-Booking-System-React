@@ -12,6 +12,8 @@ import AddBooking from "./components/Booking/AddBooking";
 import ListShowsComponent from "./components/Shows/ListShowsComponent";
 import AddShowsComponent from "./components/Shows/AddShowsComponent";
 import UpdateBooking from "./components/Booking/UpdateBooking";
+import ShowSeatTypes from "./components/SeatType/ShowSeatTypes";
+import AddSeatType from "./components/SeatType/AddSeatType";
 function App() {
 	return (
 		<div>
@@ -25,9 +27,11 @@ function App() {
 					<Route path="/selectseats" exact element={<Seat />} />
 					<Route path="/signup" exact element={<SignUp />} />
 					<Route path="/addbooking" exact element={<AddBooking />} />
-					<Route path="/updatebooking" exact element={<UpdateBooking />} />
+					<Route path="/updatebooking/:bId" exact element={<UpdateBooking />} />
 					<Route path="/shows" exact element={<ListShowsComponent />} />
 					<Route path="/add-shows" exact element={<AddShowsComponent />} />
+					<Route path="/showseattypes" exact element={<ShowSeatTypes />} />
+					<Route path="/addseattype" exact element={<AddSeatType />} />
 				</Routes>
 			</BrowserRouter>
 			<Footer />

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, TextField, Button } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BookingService from "../../Services/BookingService";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const UpdateBooking = (booking) => {
+const UpdateBooking = () => {
 	const classes = useStyles();
 	// create state variables for each input
 	const [bookingId, setBookingId] = useState("");
@@ -30,6 +30,19 @@ const UpdateBooking = (booking) => {
 	const [showId, setShowId] = useState("");
 	const [userId, setUserId] = useState("");
 	const navigate = useNavigate();
+	const { bId } = useParams();
+
+	useEffect(() => {
+		BookingService.getBookingById(bId).then((res) => {
+			let booking = res.data;
+			setBookingId(booking.bookingId);
+			setBookedDate(booking.bookedDate);
+			setShowDate(booking.showDate);
+			setShowId(booking.shows.showId);
+			setUserId(booking.users.userId);
+		});
+	}, []);
+
 	const handleClose = () => {
 		navigate("/showbookings");
 	};
@@ -47,8 +60,9 @@ const UpdateBooking = (booking) => {
 				userId: userId,
 			},
 		};
-		BookingService.createBooking(responseBody).then((res) => {
-			console.log(res);
+		console.log(responseBody);
+		BookingService.updateBooking(responseBody).then((res) => {
+			console.log(res.data);
 			handleClose();
 		});
 	};
@@ -59,6 +73,7 @@ const UpdateBooking = (booking) => {
 				label="Create Booking ID"
 				variant="filled"
 				required
+				disabled
 				value={bookingId}
 				color="secondary"
 				onChange={(e) => setBookingId(e.target.value)}
@@ -105,7 +120,7 @@ const UpdateBooking = (booking) => {
 					Cancel
 				</Button>
 				<Button type="submit" variant="contained" color="primary">
-					Add Booking
+					Update Booking
 				</Button>
 			</div>
 		</form>

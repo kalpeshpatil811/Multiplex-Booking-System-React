@@ -11,12 +11,12 @@ class BookingService {
 		return axios.post(BOOKING_API_BASE_URL, booking);
 	}
 
-	getBookingById(bookingId) {
-		return axios.get(BOOKING_API_BASE_URL + "/" + bookingId);
+	updateBooking(booking) {
+		return axios.put(BOOKING_API_BASE_URL, booking);
 	}
 
-	updateBooking(booking, bookingId) {
-		return axios.put(BOOKING_API_BASE_URL + "/" + bookingId, booking);
+	getBookingById(bookingId) {
+		return axios.get(BOOKING_API_BASE_URL + "/" + bookingId);
 	}
 
 	deleteBooking(bookingId) {

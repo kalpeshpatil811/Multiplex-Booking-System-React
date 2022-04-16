@@ -1,0 +1,10 @@
+.seatTypecard{
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: cyan;
+    box-shadow: 4px 4px 5px 1px lime;
+    width: 400px;
+    margin: 20px;
+    padding: 5px 10px;
+    float: left;
+  }
