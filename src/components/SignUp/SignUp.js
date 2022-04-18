@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(2),
 		},
 	},
+	signuppage: {
+		height: "100vh",
+		backgroundImage: "linear-gradient(to top, #d299c2 0%, #fef9d7 100%)",
+	},
 }));
 
 const Signup = () => {
@@ -53,62 +57,63 @@ const Signup = () => {
 	};
 
 	return (
-		<form className={classes.root} onSubmit={handleSubmit}>
-			<TextField
-				label="Create UserID"
-				variant="filled"
-				required
-				value={userID}
-				data-testid="userId"
-				onChange={(e) => setuserID(e.target.value)}
-			/>
-			<TextField
-				label="Full Name"
-				variant="filled"
-				required
-				value={userName}
-				onChange={(e) => setUserName(e.target.value)}
-			/>
-			<TextField
-				label="Enter User Type"
-				variant="filled"
-				required
-				value={userType}
-				onChange={(e) => setuserType(e.target.value)}
-			/>
-
-			<TextField
-				label="Email"
-				variant="filled"
-				type="email"
-				required
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
-			/>
-			<TextField
-				label="Password"
-				variant="filled"
-				type="password"
-				required
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-			/>
-			<TextField
-				label="Contact Number"
-				variant="filled"
-				required
-				value={mobileNumber}
-				onChange={(e) => setMobileNumber(e.target.value)}
-			/>
-			<div>
-				<Button variant="contained" onClick={handleClose}>
-					Cancel
-				</Button>
-				<Button type="submit" variant="contained" color="primary">
-					Signup
-				</Button>
-			</div>
-		</form>
+		<div className={classes.signuppage}>
+			<form className={classes.root} onSubmit={handleSubmit}>
+				<TextField
+					label="Create UserID"
+					variant="filled"
+					required
+					value={userID}
+					data-testid="userId"
+					onChange={(e) => setuserID(e.target.value)}
+				/>
+				<TextField
+					label="Full Name"
+					variant="filled"
+					required
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+				<TextField
+					label="Enter User Type"
+					variant="filled"
+					required
+					value={userType}
+					onChange={(e) => setuserType(e.target.value)}
+				/>
+				<TextField
+					label="Email"
+					variant="filled"
+					type="email"
+					required
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+				/>
+				<TextField
+					label="Password"
+					variant="filled"
+					type="password"
+					required
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<TextField
+					label="Contact Number"
+					variant="filled"
+					required
+					value={mobileNumber}
+					onChange={(e) => setMobileNumber(e.target.value)}
+				/>
+				<div>
+					<Button variant="contained" onClick={handleClose}>
+						Cancel
+					</Button>
+					<Button type="submit" variant="contained" color="primary">
+						Signup
+					</Button>
+				</div>
+			</form>
+		</div>
 	);
 };
 

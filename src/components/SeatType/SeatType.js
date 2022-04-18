@@ -1,8 +1,7 @@
-import styles from "./SeatType.module.css"
+import styles from "./SeatType.module.css";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import SeatTypeService from "../../Services/SeatTypeService";
-
 
 export default function SeatType({ seatType }) {
 	const navigate = useNavigate();
@@ -14,29 +13,23 @@ export default function SeatType({ seatType }) {
 		});
 	};
 
-
-	// const onUpdateHandle = (id) => {
-	// 	navigate("/updatebooking");
-	// };
-
+	const onUpdateHandle = () => {
+		navigate(`/updateseattype/${seatType.seatTypeId}`);
+	};
 
 	return (
 		<div className={styles.seatTypecard}>
-			
 			<h4>Seat Id: {seatType.seatTypeId}</h4>
 			<h4>Seat Desc: {seatType.seatTypeDesc}</h4>
 			<h4>Seat Fair: {seatType.seatFare}</h4>
-			
-			{/*
+
 			<Button
 				variant="contained"
-				onClick={() => onUpdateHandle(seatType.seatTypeId)}
+				onClick={onUpdateHandle}
 				style={{ backgroundColor: "yellow", marginLeft: "25px" }}
 			>
 				Update
 			</Button>
-	*/}
-			
 
 			<Button
 				variant="contained"

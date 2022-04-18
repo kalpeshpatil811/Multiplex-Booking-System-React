@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles, TextField, Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import BookingService from "../../Services/BookingService";
+import MovieService from "../../Services/MovieService";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -21,33 +21,28 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const AddBooking = () => {
+const AddMovie = () => {
 	const classes = useStyles();
 	// create state variables for each input
-	const [bookingId, setBookingId] = useState("");
-	const [bookedDate, setBookedDate] = useState("");
-	const [showDate, setShowDate] = useState("");
-	const [showId, setShowId] = useState("");
-	const [userId, setUserId] = useState("");
+	const [movieId, setMovieId] = useState("");
+	const [movieName, setMovieName] = useState("");
+	const [description, setDescription] = useState("");
+	const [prize, setPrize] = useState("");
 	const navigate = useNavigate();
+
 	const handleClose = () => {
-		navigate("/showbookings");
+		navigate("/showmovies");
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const responseBody = {
-			bookingId: bookingId,
-			bookedDate: bookedDate,
-			showDate: showDate,
-			shows: {
-				showId: showId,
-			},
-			users: {
-				userId: userId,
-			},
+			movieId: movieId,
+			movieName: movieName,
+			description: description,
+			prize: prize,
 		};
-		BookingService.createBooking(responseBody).then((res) => {
+		MovieService.createMovies(responseBody).then((res) => {
 			console.log(res);
 			handleClose();
 		});
@@ -62,55 +57,48 @@ const AddBooking = () => {
 		>
 			<form className={classes.root} onSubmit={(e) => handleSubmit(e)}>
 				<TextField
-					label="Create Booking ID"
+					label="Create Movie ID"
 					variant="filled"
 					required
-					value={bookingId}
+					value={movieId}
 					color="secondary"
-					onChange={(e) => setBookingId(e.target.value)}
+					onChange={(e) => setMovieId(e.target.value)}
 				/>
 				<TextField
-					label="Show Id"
+					label="Movie Name"
+					npm
 					variant="filled"
 					required
-					value={showId}
+					type="text"
+					value={movieName}
 					color="secondary"
-					onChange={(e) => setShowId(e.target.value)}
+					onChange={(e) => setMovieName(e.target.value)}
 				/>
 				<TextField
-					label="User Id"
+					label="Movie Description"
 					variant="filled"
 					required
-					value={userId}
+					type="text"
+					value={description}
 					color="secondary"
-					onChange={(e) => setUserId(e.target.value)}
+					onChange={(e) => setDescription(e.target.value)}
 				/>
+
 				<TextField
-					label="Booking Date"
+					label="Movie Prize"
 					variant="filled"
 					required
-					type="date"
-					InputLabelProps={{ shrink: true }}
-					value={bookedDate}
+					type="text"
+					value={prize}
 					color="secondary"
-					onChange={(e) => setBookedDate(e.target.value)}
-				/>
-				<TextField
-					label="Show Date"
-					variant="filled"
-					required
-					type="date"
-					InputLabelProps={{ shrink: true }}
-					value={showDate}
-					color="secondary"
-					onChange={(e) => setShowDate(e.target.value)}
+					onChange={(e) => setPrize(e.target.value)}
 				/>
 				<div>
 					<Button variant="contained" onClick={handleClose}>
 						Cancel
 					</Button>
 					<Button type="submit" variant="contained" color="primary">
-						Add Booking
+						Add Movie
 					</Button>
 				</div>
 			</form>
@@ -118,4 +106,4 @@ const AddBooking = () => {
 	);
 };
 
-export default AddBooking;
+export default AddMovie;

@@ -1,4 +1,4 @@
-.bookings{
+.bookingdetails{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
 .addbtn{
   width: 50%;
 }
-.bookingcontainer{
+.bookingdetailscontainer{
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;

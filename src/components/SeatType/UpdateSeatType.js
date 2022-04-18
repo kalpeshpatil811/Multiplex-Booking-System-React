@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, TextField, Button } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SeatTypeService from "../../Services/SeatTypeService";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,16 +21,26 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const AddSeatType = () => {
+const UpdateSeatType = () => {
 	const classes = useStyles();
 	// create state variables for each input
 	const [seatTypeId, setSeatTypeId] = useState("");
 	const [seatTypeDesc, setSeatTypeDesc] = useState("");
 	const [seatFare, setSeatFare] = useState("");
-
 	const navigate = useNavigate();
+	const { stId } = useParams();
+
+	useEffect(() => {
+		SeatTypeService.getSeatTypeById(stId).then((res) => {
+			let seatType = res.data;
+			setSeatTypeId(seatType.seatTypeId);
+			setSeatTypeDesc(seatType.seatTypeDesc);
+			setSeatFare(seatType.seatFare);
+		});
+	}, [stId]);
+
 	const handleClose = () => {
-		navigate("/showSeatType");
+		navigate("/showseattype");
 	};
 
 	const handleSubmit = (e) => {
@@ -40,8 +50,9 @@ const AddSeatType = () => {
 			seatTypeDesc: seatTypeDesc,
 			seatFare: seatFare,
 		};
-		SeatTypeService.createSeatType(responseBody).then((res) => {
-			console.log(res);
+		console.log(responseBody);
+		SeatTypeService.updateSeatType(responseBody).then((res) => {
+			console.log(res.data);
 			handleClose();
 		});
 	};
@@ -55,16 +66,17 @@ const AddSeatType = () => {
 		>
 			<form className={classes.root} onSubmit={(e) => handleSubmit(e)}>
 				<TextField
-					label="Create SeatType ID"
+					label="SeatType Id"
 					variant="filled"
 					required
+					disabled
 					type="number"
 					value={seatTypeId}
 					color="secondary"
 					onChange={(e) => setSeatTypeId(e.target.value)}
 				/>
 				<TextField
-					label="Seat Description"
+					label="Seat Desc"
 					variant="filled"
 					required
 					type="text"
@@ -89,7 +101,7 @@ const AddSeatType = () => {
 						Cancel
 					</Button>
 					<Button type="submit" variant="contained" color="primary">
-						Add Seat
+						Update SeatType
 					</Button>
 				</div>
 			</form>
@@ -97,4 +109,4 @@ const AddSeatType = () => {
 	);
 };
 
-export default AddSeatType;
+export default UpdateSeatType;

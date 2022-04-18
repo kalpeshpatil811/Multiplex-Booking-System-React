@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(2),
 		},
 	},
+	loginpage: {
+		height: "100vh",
+		backgroundImage: "linear-gradient(to right, #fa709a 0%, #fee140 100%)",
+	},
 }));
 
 const SignUp = () => {
@@ -32,7 +36,7 @@ const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(userName, password);
-		if (userName === "Nimesh" && password === "Pass@123") {
+		if (userName === "Admin" && password === "Pass@123") {
 			navigate("/");
 		} else {
 			alert("Wrong Username or Password");
@@ -41,34 +45,36 @@ const SignUp = () => {
 	};
 
 	return (
-		<form className={classes.root} onSubmit={handleSubmit}>
-			<TextField
-				label="User Name"
-				variant="filled"
-				required
-				value={userName}
-				onChange={(e) => setUserName(e.target.value)}
-			/>
-			<TextField
-				label="Password"
-				variant="filled"
-				type="password"
-				required
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-			/>
-			<div>
-				<Button type="submit" variant="contained" color="primary">
-					Login
-				</Button>
-			</div>
-			<p>
-				Not an existing user??
-				<Link to="/signup">
-					<span>SignUp</span>
-				</Link>
-			</p>
-		</form>
+		<div className={classes.loginpage}>
+			<form className={classes.root} onSubmit={handleSubmit}>
+				<TextField
+					label="User Name"
+					variant="filled"
+					required
+					value={userName}
+					onChange={(e) => setUserName(e.target.value)}
+				/>
+				<TextField
+					label="Password"
+					variant="filled"
+					type="password"
+					required
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<div>
+					<Button type="submit" variant="contained" color="primary">
+						Login
+					</Button>
+				</div>
+				<p>
+					Not an existing user??
+					<Link to="/signup">
+						<span>SignUp</span>
+					</Link>
+				</p>
+			</form>
+		</div>
 	);
 };
 

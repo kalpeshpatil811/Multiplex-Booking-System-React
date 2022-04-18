@@ -22,6 +22,7 @@ export default function Booking({ booking }) {
 			<h4>Movie: {booking.shows.movies.movieName}</h4>
 			<h4>Booking Date: {booking.bookedDate}</h4>
 			<h4>Show Date: {booking.showDate}</h4>
+			<h4>Show Time: {booking.shows.showTime}</h4>
 			<Button
 				variant="contained"
 				startIcon={<Edit />}

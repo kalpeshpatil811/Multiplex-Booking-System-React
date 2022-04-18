@@ -35,7 +35,12 @@ class GetList extends Component {
 			);
 
 		return (
-			<div className="App">
+			<div
+				style={{
+					height: "100vh",
+					backgroundImage: "linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%)",
+				}}
+			>
 				<h1> All Users </h1>
 				{items.map((item) => (
 					<User key={item.userId} user={item} />

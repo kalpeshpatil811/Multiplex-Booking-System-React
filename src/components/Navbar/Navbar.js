@@ -16,11 +16,17 @@ const Navbar = () => {
 					<NavLink to="/shows" activeStyle>
 						Shows
 					</NavLink>
+					<NavLink to="/showmovies" activeStyle>
+						Movies
+					</NavLink>
 					<NavLink to="/showbookings" activeStyle>
 						Bookings
 					</NavLink>
-					<NavLink to="/showseattypes" activeStyle>
+					<NavLink to="/showseattype" activeStyle>
 						SeatTypes
+					</NavLink>
+					<NavLink to="/showbookingdetails" activeStyle>
+						Booking Details
 					</NavLink>
 				</NavMenu>
 				<NavBtn>
