@@ -17,7 +17,7 @@ function ShowBookingDetails() {
 	};
 	return (
 		<div className={styles.bookingdetails}>
-			<h1>All BookingDetails</h1>
+			<h1>All Booking Details</h1>
 			<Button variant="outlined" onClick={onAddHandle} color="secondary" className={styles.addbtn}>
 				Add Booking Details
 			</Button>
